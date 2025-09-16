@@ -1,0 +1,23 @@
+
+//------star animation----
+.image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  transition: .9s ease;
+}
+.image svg {
+  width: 1rem;
+  height: 1rem;
+}
+.group:hover .image {
+  animation: pulse .9s linear infinite;
+  stroke: #ffffff;
+}
+//-----------------------
