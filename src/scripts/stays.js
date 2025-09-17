@@ -13,8 +13,7 @@
  * @property {number|null} beds - El número de camas disponibles (puede ser null si no se especifica).
  * @property {string} photo - Una URL a una foto del alojamiento.
  */
-export const stays = [
-    {
+export const stays = [{
         "city": "Helsinki",
         "country": "Finland",
         "superHost": false,
