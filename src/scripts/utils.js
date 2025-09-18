@@ -1,56 +1,55 @@
-import { stays } from "./stays.js";
-
 /**
  * Módulo de funciones utilitarias.
  * Este archivo contiene funciones auxiliares que serán utilizadas y llamadas
  * desde el archivo principal para realizar varias operaciones.
  */
-const btnModal = document.querySelector("#btnModal")
-const modalNav = document.querySelector("#nav")
-const btnCerrar = document.querySelector("#btnClose")
-const body = document.querySelector("#body")
 
-//------open / close modal search location-------
-const abrirModal = () => {
+const modalNav = document.querySelector("#nav");
+const btnCerrar = document.querySelector("#btnClose");
+const body = document.querySelector("#body");
+const btnSearch = document.querySelector("#btnSearch")
+const modalGuests = document.querySelector("#btnGuest");
+const menuCantGuests = document.querySelector("#menuCantGuests")
+    //------open / close modal search location-------
 
-    if (btnModal && modalNav) {
-        btnModal.addEventListener("click", (e) => {
-            e.preventDefault()
-            modalNav.classList.remove("hidden")
-            console.log("abriendo modal");
-            body.classList.remove("mx-4");
-        })
-        btnCerrar.addEventListener("click", (e) => {
-            e.preventDefault()
-            modalNav.classList.add("hidden");
-            body.classList.add("mx-4");
-            console.log("cerrando el modal");
-        })
-        document.addEventListener("click", (e) => {
-            const isClickInside = modalNav.contains(e.target) || btnModal.contains(e.target)
-            if (!isClickInside && !modalNav.classList.contains("hidden")) {
-                modalNav.classList.add("hidden")
-                body.classList.add("mx-4");
-                console.log("cerrando el modal");
-            }
-        })
-
-    }
+export const abrirModal = () => {
+    modalNav.classList.remove("hidden");
+    console.log("abriendo modal");
+    body.classList.remove("mx-4");
 };
 
-export { abrirModal };
 
-//-----crear promesa----
-let promesa = new Promise((resolve, reject) => {
-    let llegoData = true;
-    setTimeout(() => {
-        if (llegoData) {
-            resolve(stays);
-        } else {
-            reject("no llego data");
+const cerrarModal = () => {
+    modalNav.classList.add("hidden");
+    body.classList.add("mx-4");
+    console.log("cerrando el modal");
+    menuCantGuests.classList.add("hidden");
+};
+
+
+export const initModal = () => {
+    btnCerrar.addEventListener("click", (e) => {
+        e.preventDefault()
+        cerrarModal();
+    });
+
+    document.addEventListener("click", (e) => {
+        const isClickInside = modalNav.contains(e.target) || btnSearch.contains(e.target)
+        if (!isClickInside && !modalNav.classList.contains("hidden")) {
+            cerrarModal();
         }
-    }, 2000);
-});
+    });
+    btnSearch.addEventListener("click", (e) => {
+        e.preventDefault();
+        cerrarModal();
+    });
+};
 
+export const abrirGuests = () => {
+    modalGuests.addEventListener("click", (e) => {
+        e.preventDefault();
+        menuCantGuests.classList.remove("hidden");
+        console.log("se presionó el boton guests"); //NO CIERRA EL MODAL VER
 
-export { promesa };
+    });
+};

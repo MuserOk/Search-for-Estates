@@ -10,7 +10,7 @@
     <title>PF Windbnd Vanilla</title>
 </head>
 
-<body id="body" class="min-h-screen mx-4 lg:m-0 lg:px-0 flex flex-col relative lg:w-screen">
+<body id="body" class=" relative min-h-screen mx-4 lg:m-0 lg:px-0 flex flex-col lg:w-screen">
     <header class="flex flex-col sm:flex-row md:px-8">
         <!--photo-->
         <img src="./src/images/icons/logo-f7862584.svg" alt="logo" class="pl-2 size-34 sm:w-28 sm:h-28 ">
@@ -30,33 +30,33 @@
             <div class="relative rounded-2xl border-1 border-gray-100/50 shadow-md w-full flex flex-col lg:items-center lg:flex-row lg:mt-20 ">
                 <div class="border-b-1 border-gray-100 w-full lg:w-[40%] px-6 pt-3 pb-2 lg:pb-3 lg:pt-2 flex flex-col">
                     <label class="font-medium text-xs" for="">LOCATION</label>
-                    <input id="inputLocation" type="text" placeholder="Vaasa,Finland" class=" border-none outline-none focus:outline-none focus:ring-0 ">
-                    <ul id="conteinerSugCountry" class="absolute left-0 w-full bg-white/50 hidden z-50"></ul>
+                    <input id="inputLocation" type="text" placeholder="City, Country" class=" border-none outline-none focus:outline-none focus:ring-0 ">
+                    <ul id="listSugCountry" class="absolute left-0 z-50 w-full bg-red-700"></ul>
                 </div>
-                <div class="w-full px-6 pt-2 pb-3 flex flex-col lg:w-[20%]">
-                    <label class="font-medium text-xs" for="">GUESTS</label>
-                    <input type="text" placeholder="5 guests" class=" border-none outline-none focus:outline-none focus:ring-0">
-                </div>
+                <button id="btnGuests" type="button" class="cursor-pointer w-full px-6 pt-2 pb-3 flex flex-col lg:w-[20%]">
+                    <p class="text-start font-medium text-xs" for="">GUESTS</p>
+                    <p id="inputCantGuests" class="text-start text-gray-500 text-lg border-none outline-none focus:outline-none focus:ring-0 ">5 guests</p>
+                </button>
 
             </div>
-            <!--aparece al hacer clic en GUEST-->
-            <section class="hidden lg:items-center lg:w-full flex-1 flex flex-col items-start mx-4 gap-6 ">
+            <!--aparece al hacer clic en GUESTS-->
+            <section id="menuCantGuests" class="hidden lg:items-center lg:w-full flex-1 flex flex-col items-start mx-4 gap-6 ">
                 <div class="py-2 ">
                     <h5 class="font-medium ">Adult</h5>
                     <p class="text-gray-300 font-light pb-2 ">Ages 13 or above</p>
                     <div class="flex w-auto justify-between items-center ">
-                        <button type="button " class="border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">-</button>
-                        <p class="w-6 h-6 text-center ">4</p>
-                        <button type="button " class="border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">+</button>
+                        <button type="button " class="resta border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">-</button>
+                        <p class="idAdulto w-6 h-6 text-center ">4</p>
+                        <button type="button " class="suma border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">+</button>
                     </div>
                 </div>
                 <div class="py-2 ">
                     <h5 class="font-medium ">Children</h5>
                     <p class="text-gray-300 font-light pb-2 ">Ages 13 or above</p>
                     <div class="flex w-auto justify-between items-center ">
-                        <button type="button " class="border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">-</button>
-                        <p class="w-6 h-6 text-center ">1</p>
-                        <button type="button " class="border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">+</button>
+                        <button type="button " class="resta border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">-</button>
+                        <p class="idNiño w-6 h-6 text-center ">1</p>
+                        <button type="button " class="suma  border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">+</button>
                     </div>
                 </div>
             </section>
@@ -71,7 +71,7 @@
             </button>
         </nav>
     </header>
-    <main id="conteinerCards" class="flex-1 lg:mx-10">
+    <main id="conteinerCards" class="flex-1 lg:mx-10 flex items-center justify-center flex-col">
 
 
 
