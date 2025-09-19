@@ -4,6 +4,7 @@
  * desde el archivo principal para realizar varias operaciones.
  */
 import { totalGuests } from "./searchGuests.js";
+import { modalFilter } from "./seachLocation.js";
 
 const modalNav = document.querySelector("#nav");
 const conteiner = document.querySelector("#conteinerCards")
@@ -11,6 +12,8 @@ const fondoGris = document.querySelector("#overlay")
 const btnCerrar = document.querySelector("#btnClose");
 const body = document.querySelector("#body");
 const btnSearch = document.querySelector("#btnSearch")
+
+const inputAddLocation = document.querySelector("#inputLocation");
 const modalGuests = document.querySelector("#btnGuests");
 const menuCantGuests = document.querySelector("#menuCantGuests")
 
@@ -62,4 +65,9 @@ modalGuests.addEventListener("click", (e) => {
     totalGuests();
     console.log("se presionó el boton guests"); //NO CIERRA EL MODAL VER
 
+});
+
+//escuchador del input
+inputAddLocation.addEventListener("click", (e) => {
+    modalFilter();
 });

@@ -1,45 +1,30 @@
-# ¡Bienvenidos al proyecto! 🎉
+Bienvenido a mi Proyecto! 
 
-Este repositorio es una plantilla diseñada para ayudarte a comenzar rápidamente. Sigue estos pasos para configurar tu entorno y empezar a trabajar:
+Gracias desde ya por tu visita.
 
-## 1. Usa esta plantilla
-Haz clic en el botón **"Use this template"** en la parte superior derecha de este repositorio para crear un nuevo proyecto basado en esta plantilla. 📂
+---EXTRAS--
 
-## 2. Instala las dependencias
-Después de clonar tu nuevo repositorio, abre la terminal en la carpeta del proyecto y ejecuta:
-```bash
-npm install
-```
-Esto instalará todo lo necesario para que el proyecto funcione. ✅
+DarkMode: a fin de respetar el diseño original, agregué la funcionalidad de activacion directamente a la configuracion del usuario en su sistema.
+     1- ![light mode laptop:](./src/images/result-readme/laptop-lightMode.png)
+     2- ![dark mode laptop:](./src/images/result-readme/laptop-darkMode.png)
 
-## 3. Compila los estilos de Tailwind CSS ✂️
-Para que los estilos de Tailwind funcionen mientras trabajas, ejecuta:
-```bash
-npm run tw
-```
-Este comando se encargará de compilar los estilos cada vez que uses clases de Tailwind en tu HTML. 🎨
 
-## 4. Archivos importantes 📂
-- **`src/scripts/stays.js`**: Aquí encontrarás la data que necesitarás usar durante el proyecto. ¡Es tu fuente de información principal! 📊
-- **`src/scripts/main.js`**: Este es el archivo donde escribirás el código principal de tu aplicación. Todo lo que construyas comenzará aquí. 🛠️
-- **`src/scripts/utils.js`**: Este archivo contiene funciones auxiliares que pueden ser reutilizadas en diferentes partes de tu proyecto. Es un buen lugar para almacenar lógica común, como validaciones, formateos o cálculos. 🔧
-- **`src/images/design`**: En esta carpeta encontrarás capturas que muestran cómo debería lucir el resultado esperado. Esto te servirá como referencia visual. 🖼️
-- **`index.html`**: Este es el archivo donde desarrollarás el diseño de tu proyecto. Aquí se integrarán los estilos y el código para dar vida a tu aplicación. 🖋️
+Estilos:
 
-```plaintext
-📂 ├── src/
-    📜 ├── scripts/
-         📄 ├── stays.js
-         📄 └── main.js
-    🖼️ ├── images/
-         🖼️ └── design/
-📄 ├── index.html
-📦 ├── package.json
-📖 └── README.md
-🚫 └── .gitignore
-```
+     1- cards:hover, active, sombras, redondeos de bordes en imagen, background, colores de fuentes, animacion en rating. 
+               - tambien hay estilos adaptados al darkmode.
+     2- body: en modo dark
 
-## 5. ¡Manos a la obra! 🚀
-Ya tienes todo listo para empezar. Explora los archivos, experimenta con el código y diviértete aprendiendo. 🎉
+     3- logo: en modo dark
 
-Si tienes dudas, no dudes en preguntar. ¡Éxito en tu proyecto! 💪
+     4- opcion filtrado: hover, sombras modo dark
+
+     5- modalFiltros
+          - boton cerrar: background
+          - darkmode: background, texto cerrar, boton search, titulo accion.
+
+Capturas:
+![mobile-hover_efect-darkMode:](./src/images/result-readme/mobile-hover_efect-darkMode.png)
+![mobile-hover_efect-lightMode:](./src/images/result-readme/mobile-hover_efect-lightMode.png)
+![modal-filros_mobile:](./src/images/result-readme/modal-filros_mobile.png)
+![modal-filtros_laptop:](./src/images/result-readme/modal-filtros_laptop.png)

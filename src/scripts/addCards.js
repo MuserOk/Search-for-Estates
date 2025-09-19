@@ -51,9 +51,9 @@ export async function getLocation(arrayIn) {
                     const section = conteiner.querySelector("section");
                     filtrados.forEach(({ beds, photo, rating, superHost, title, type }) => {
                                 section.innerHTML += `
-          <div class="group hover:bg-[#e77474] active:bg-[#e77474] focus:bg-[#e77474] dark:hover:bg-gray-700 transition duration-700 rounded-3xl  hover:shadow-black/50 active:shadow-black/50 focus:shadow-black/50 dark:hover:shadow-gray-200 dark:active:shadow-gray-200 dark:focus:shadow-gray-200 hover:shadow-[0px_0px_12px] active:shadow-[0px_0px_12px] focus:shadow-[0px_0px_12px]">
+          <div class="group hover:bg-[#e77474] active:bg-[#e77474]  dark:hover:bg-gray-700 transition duration-700 rounded-3xl  hover:shadow-black/50 active:shadow-black/50 dark:hover:shadow-gray-200 dark:active:shadow-gray-200 hover:shadow-[0px_0px_12px] active:shadow-[0px_0px_12px]">
             <!--photo-->
-            <img class="rounded-3xl w-full h-[350px] object-cover group-hover:rounded-b-none duration-initial dark:opacity-60 dark:group-hover:opacity-100 group-active:opacity-100 group-focus:opacity-100 transition duration-300" src="${photo}" alt="photo">
+            <img class="rounded-3xl w-full h-[350px] object-cover group-hover:rounded-b-none duration-initial dark:opacity-60 dark:group-hover:opacity-100 group-active:opacity-100 transition duration-300" src="${photo}" alt="photo">
             <div class="flex justify-between px-2 py-2 items-center">
               <!--superHost + type + beds + rating-->
               <div class="flex gap-2 items-center">

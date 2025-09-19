@@ -1,0 +1,4 @@
+trabajando en el filtro de lugar
+
+
+- trabajar en l funcion de contar huespedes

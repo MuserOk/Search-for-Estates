@@ -1,19 +1,20 @@
 //------Search location -----
 import { promesa } from "./getApi.js";
-
 import { getLocation } from "./addCards.js";
-import { abrirGuests } from "./utils.js"; //inicializar los listener de cerrar...
 
-let inputAddLocation = document.querySelector("#inputLocation");
+
+
 let modalListSuge = document.querySelector("#listSugCountry"); //el ul
-
 
 
 //iniciar el filtrado
 export const modalFilter = () => {
     if (!inputAddLocation) return;
 
+    //escuchador del input
     inputAddLocation.addEventListener("input", async(e) => {
+
+
         let searchWord = e.target.value.toLowerCase().trim();
 
         //------searching-filtering-----
@@ -38,7 +39,7 @@ export const modalFilter = () => {
             return;
         }
 
-        initModal();
+
 
         //ABRIENDO GUESTS y guardando resultado --------------------------------------------------
         let total = abrirGuests();
@@ -69,6 +70,12 @@ export const modalFilter = () => {
             });
             modalListSuge.appendChild(li);
         });
-        modalListSuge.classList.remove("hidden");
+        modalListSuge.classList.remove("hidden");;
     });
 }
+
+
+/* //escuchador del input
+inputAddLocation.addEventListener("input", async(e) => {
+    modalFilter();
+}) */
