@@ -1,10 +1,12 @@
 //------Search location -----
+import { promesa } from "./getApi.js";
+
 import { getLocation } from "./addCards.js";
-import { promesa } from "./api.js";
-import { abrirGuests, initModal } from "./utils.js"; //inicializar los listener de cerrar...
+import { abrirGuests } from "./utils.js"; //inicializar los listener de cerrar...
 
 let inputAddLocation = document.querySelector("#inputLocation");
 let modalListSuge = document.querySelector("#listSugCountry"); //el ul
+
 
 
 //iniciar el filtrado
@@ -20,23 +22,17 @@ export const modalFilter = () => {
             modalListSuge.innerHTML = "";
             return;
         }
-        //buscamos datos y luego la coincidencia
+        //buscamos datos
         let datos = await promesa;
 
 
         let filtered = datos.filter(stay => {
             stay.city.toLowerCase().startsWith(searchWord) ||
                 stay.country.toLowerCase().startsWith(searchWord)
+            return
         });
 
-        //ABRIENDO GUESTS y guardando resultado --------------------------------------------------
-        let total = abrirGuests();
-        //luego agregar numero para comparar y filtrar -------------------------------------------
-
-
-        let uniqueLoc = [...new Set(filtered.map(stay => `${stay.city}, ${stay.country}, ${total}`))];
-
-        if (uniqueLoc.length === 0) {
+        if (filtered.length === 0) {
             modalListSuge.classList.add("hidden");
             modalListSuge.innerHTML = "";
             return;
@@ -44,25 +40,35 @@ export const modalFilter = () => {
 
         initModal();
 
+        //ABRIENDO GUESTS y guardando resultado --------------------------------------------------
+        let total = abrirGuests();
+        //luego agregar numero para comparar y filtrar -------------------------------------------
+
+
+        let uniqueLoc = [...new Set(filtered.map(stay => `${stay.city}, ${stay.country}`))];
+
         modalListSuge.innerHTML = "";
         //agregar las opciones de coincidencias
         uniqueLoc.forEach(locationWord => {
             let li = document.createElement("li");
             li.textContent = locationWord;
             li.className = "px-4 py-2 hover:bg-gray-200 cursor-pointer";
+
+            li.addEventListener("click", () => {
+                inputAddLocation.value = locationWord;
+                modalListSuge.classList.add("hidden");
+                modalListSuge.innerHTML = "";
+
+                let [city, country] = locationWord.split(",").map(s => s.trim());
+
+                let totalGuests = abrirGuests();
+
+                const arrayFiltros = [city, country, totalGuests];
+                getLocation(arrayFiltros);
+
+            });
+            modalListSuge.appendChild(li);
         });
-
-        li.addEventListener("click", () => {
-            inputAddLocation.value = locationWord;
-            modalListSuge.classList.add("hidden");
-            modalListSuge.innerHTML = "";
-
-            getLocation([locationWord]);
-        });
-
-        modalListSuge.appendChild(li);
-
         modalListSuge.classList.remove("hidden");
-
     });
 }

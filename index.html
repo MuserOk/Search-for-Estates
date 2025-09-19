@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html id="modoDark" lang="en" class="">
 
 <head>
     <meta charset="UTF-8">
@@ -10,57 +10,75 @@
     <title>PF Windbnd Vanilla</title>
 </head>
 
-<body id="body" class=" relative min-h-screen mx-4 lg:m-0 lg:px-0 flex flex-col lg:w-screen">
-    <header class="flex flex-col sm:flex-row md:px-8">
-        <!--photo-->
-        <img src="./src/images/icons/logo-f7862584.svg" alt="logo" class="pl-2 size-34 sm:w-28 sm:h-28 ">
-        <!--city + maxGuests-->
-        <button id="btnModal" type="button" class="cursor-pointer hover:bg-[#f8f5f565] w-full sm:w-[36%] md:w-[28%] flex items-center m-auto rounded-2xl shadow-[0_1px_6px_#0000001a] mr-2">
-            <!--ADICIONAL:al buscar un sitio, queda guardado un historial-->
-            <div class="w-[42%]  text-center text-xl text-[#BDBDBD]">Add location</div>
-            <div class="w-[40%] text-center text-xl text-[#BDBDBD] py-4 border-gray-300/50 border-[0px_1px]">Add guest</div>
+<body id="body" class=" relative min-h-screen mx-4 lg:m-0 lg:px-0 flex flex-col lg:w-screen dark:bg-gray-800">
+    <header class="flex flex-col sm:flex-row md:px-6 lg:px-8 xl:px-12">
+        <!--logo-->
+        <img src="./src/images/icons/logo-f7862584.svg" alt="logo" class="pl-2 size-34 sm:w-28 sm:h-28  dark:drop-shadow-white dark:drop-shadow-[-0.5px_0.2px_0.2px]">
+        <!--buscar una estancia-->
+        <button id="btnModal" type="button" class="cursor-pointer hover:bg-[#f8f5f565] active:bg-[#f8f5f565] focus:bg-[#f8f5f565] transition duration-300 w-full sm:w-[46%] lg:w-[30%] xl:w-[26%] flex items-center m-auto rounded-2xl dark:bg-gray-700 dark:hover:bg-gray-500   dark:activate:bg-gray-500 dark:focus:bg-gray-500   dark:shadow-gray-500 dark:shadow-[0px_1px_6px] shadow-[0_1px_6px_#0000001a] mr-2">
+            <div class="w-[42%]  text-center sm:text-lg text-xl text-[#BDBDBD] dark:text-white">Add location</div>
+            <div class="w-[40%] text-center sm:text-lg text-xl text-[#BDBDBD] dark:text-white py-4 border-gray-300/50 border-[0px_1px]">Add guest</div>
             <svg class="w-[16%]" width="1rem" height="1rem" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" ><g id="SVGRepo_bgCarrier" ></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>search</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-256.000000, -1139.000000)" fill="#eb5757"> <path d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z" id="search" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
         </button>
-        <!--nav oculto-->
-        <nav id="nav" class="hidden m-0 absolute top-0 inset-0 z-40 flex flex-col gap-6 items-start h-[80%] bg-white lg:h-[50%]">
-            <div class="lg:hidden flex justify-between pr-8 mt-6 items-center w-full">
-                <h2 class="font-medium">Edit your search</h2>
-                <button id="btnClose" type="button" class="text-2xl font-medium hover:bg-[#eb5757] py-1 px-3 hover:text-white hover:rounded-sm">X</button>
+        <!--modal oculto para filtrar-->
+        <div id="overlay" class="hidden fixed inset-0 bg-black/20 z-5"></div>
+        <nav id="nav" class="hidden m-0 absolute top-0 inset-0 z-10 flex flex-col gap-6 items-center h-[80%] mb-[20%] bg-white dark:bg-gray-700 border-b-2 border-gray-800/10 lg:h-[60%] transition-transform " tabindex="-1" aria-labelledby="drawer-top-label">
+            <div class="lg:hidden flex justify-between pr-8 pl-4 mt-6 items-center w-full">
+                <h2 class="font-medium dark:text-gray-100">Edit your search</h2>
+                <button id="btnClose" type="button" class="text-2xl font-medium hover:bg-[#eb5757] active:bg-[#eb5757]  py-1 px-3 hover:text-white hover:rounded-sm active:rounded-sm dark:text-white">X</button>
             </div>
-            <div class="relative rounded-2xl border-1 border-gray-100/50 shadow-md w-full flex flex-col lg:items-center lg:flex-row lg:mt-20 ">
-                <div class="border-b-1 border-gray-100 w-full lg:w-[40%] px-6 pt-3 pb-2 lg:pb-3 lg:pt-2 flex flex-col">
-                    <label class="font-medium text-xs" for="">LOCATION</label>
-                    <input id="inputLocation" type="text" placeholder="City, Country" class=" border-none outline-none focus:outline-none focus:ring-0 ">
-                    <ul id="listSugCountry" class="absolute left-0 z-50 w-full bg-red-700"></ul>
+            <div class="lg:relative rounded-2xl border-1 border-gray-100/50 dark:bg-gray-800/20 shadow-md w-[90%] dark:shadow-gray-500 dark:shadow-[0px_1px_6px] flex flex-col  lg:items-center lg:flex-row lg:mt-20 ">
+                <div class="border-b-[0.125px] lg:border-0 border-gray-50/50 w-full lg:w-[42%] px-6 pt-3 pb-2 lg:pb-3 lg:pt-2 flex flex-col">
+                    <label class="font-medium text-xs dark:text-gray-50" for="">LOCATION</label>
+                    <input id="inputLocation" type="text" placeholder="City, Country" class="border-none text-gray-500 text-lg outline-none focus:outline-none focus:ring-0 ">
                 </div>
-                <button id="btnGuests" type="button" class="cursor-pointer w-full px-6 pt-2 pb-3 flex flex-col lg:w-[20%]">
-                    <p class="text-start font-medium text-xs" for="">GUESTS</p>
-                    <p id="inputCantGuests" class="text-start text-gray-500 text-lg border-none outline-none focus:outline-none focus:ring-0 ">5 guests</p>
+                <!--boton para cantidad huespedes-->
+                <button id="btnGuests" type="button" class="cursor-pointer w-full px-6 pt-2 pb-3 flex-col lg:w-[20%]">
+                    <p class="text-start font-medium text-xs dark:text-gray-50" for="">GUESTS</p>
+                    <p id="inputCantGuests" class="text-start text-gray-500 text-lg border-none outline-none focus:outline-none focus:ring-0 ">2 guests</p>
                 </button>
 
             </div>
-            <!--aparece al hacer clic en GUESTS-->
-            <section id="menuCantGuests" class="hidden lg:items-center lg:w-full flex-1 flex flex-col items-start mx-4 gap-6 ">
-                <div class="py-2 ">
-                    <h5 class="font-medium ">Adult</h5>
-                    <p class="text-gray-300 font-light pb-2 ">Ages 13 or above</p>
-                    <div class="flex w-auto justify-between items-center ">
-                        <button type="button " class="resta border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">-</button>
-                        <p class="idAdulto w-6 h-6 text-center ">4</p>
-                        <button type="button " class="suma border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex justify-center items-center ">+</button>
+            <section class="flex w-full pl-16 justify-end gap-8">
+                <!--sugerencias estancias-->
+                <div id="dropdown" class="z-10 hidden bg-white divide-y pl-4 divide-gray-100 rounded-lg shadow-sm w-[40%] dark:bg-gray-700">
+                    <ul id="listSugCountry" class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+
+                    </ul>
+                </div>
+                <!--botones para seleccionar cantidad de huespedes-->
+                <div id="menuCantGuests" class="hidden lg:items-center lg:w-[16%] flex-col items-start mx-4 gap-6 ">
+                    <div class="py-2">
+                        <h5 class="font-medium ">Adult</h5>
+                        <p class="text-gray-300/50 font-light pb-2 ">Ages 13 or above</p>
+                        <div class="flex w-auto justify-between items-center ">
+                            <form class="w-full">
+                                <div class="relative flex justify-between">
+                                    <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="border-1 w-6 h-6 rounded-sm text-gray-400/90 border-gray-400/90 bg-gray-300/50 p-1 flex justify-center items-center shrink-0 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">-</button>
+                                    <input type="text" id="counter-input" data-input-counter class="shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center" placeholder="" value="2" required />
+                                    <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="border-1 w-6 h-6 rounded-sm text-gray-400/90 border-gray-400/90 bg-gray-300/50 p-1 flex justify-center items-center shrink-0 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">+</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="py-2 ">
+                        <h5 class="font-medium ">Children</h5>
+                        <p class="text-gray-300/50 font-light pb-2 ">Ages 13 or above</p>
+                        <div class="flex w-auto justify-between items-center ">
+                            <form class="w-full">
+                                <div class="relative flex justify-between">
+                                    <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="border-1 w-6 h-6 rounded-sm text-gray-400/90 border-gray-400/90 bg-gray-300/50 p-1 flex justify-center items-center shrink-0 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">-</button>
+                                    <input type="text" id="counter-input" data-input-counter class="shrink-0 text-gray-900 dark:text-white border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center" placeholder="" value="0" required />
+                                    <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="border-1 w-6 h-6 rounded-sm text-gray-400/90 border-gray-400/90 bg-gray-300/50 p-1 flex justify-center items-center shrink-0 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">+</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="py-2 ">
-                    <h5 class="font-medium ">Children</h5>
-                    <p class="text-gray-300 font-light pb-2 ">Ages 13 or above</p>
-                    <div class="flex w-auto justify-between items-center ">
-                        <button type="button " class="resta border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">-</button>
-                        <p class="idNiño w-6 h-6 text-center ">1</p>
-                        <button type="button " class="suma  border-1 w-6 h-6 rounded-sm border-gray-200 bg-gray-100 p-1 flex items-center justify-center ">+</button>
-                    </div>
-                </div>
+                <div class="w-[36%]"></div>
             </section>
-            <button id="btnSearch" type="button" class="lg:absolute right-30 top-23 cursor-pointer m-auto px-6 py-2 bg-[#eb5757] rounded-2xl flex justify-center items-center gap-4 text-white mb-6 ">
+            <!--boton para buscar (comenzar el filtrado)-->
+            <button id="btnSearch" type="button" class="absolute lg:right-30 lg:top-23 lg:translate-x-0 lg:left-auto left-1/2 -translate-x-1/2 bottom-[2rem] lg:bottom-auto  cursor-pointer m-auto px-6 py-2 bg-[#eb5757] rounded-2xl flex justify-center items-center gap-4 text-white mb-6  dark:shadow-[#ed9797] dark:shadow-[0px_0px_2px]">
                 <svg class="w-[18%] " width="1rem " height="1rem " viewBox="0 0 32 32 " version="1.1 " xmlns="http://www.w3.org/2000/svg " xmlns:xlink="http://www.w3.org/1999/xlink " xmlns:sketch="http://www.bohemiancoding.com/sketch/ns " ><g id="SVGRepo_bgCarrier
                         " ></g><g id="SVGRepo_tracerCarrier " stroke-linecap="round " stroke-linejoin="round "></g><g id="SVGRepo_iconCarrier "> <title>search</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1 " stroke="none " stroke-width="1
                         " fill="none " fill-rule="evenodd " sketch:type="MSPage "> <g id="Icon-Set " sketch:type="MSLayerGroup " transform="translate(-256.000000, -1139.000000) " fill="#ffffff "> <path d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25
@@ -70,6 +88,7 @@
                 <p>search</p>
             </button>
         </nav>
+
     </header>
     <main id="conteinerCards" class="flex-1 lg:mx-10 flex items-center justify-center flex-col">
 
